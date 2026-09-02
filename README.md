@@ -1,33 +1,41 @@
-# kickoff
+# Skill-Pubes
 
-A [Claude Code](https://claude.com/claude-code) skill that turns "start working on this" into a set of scoped, right-sized sub-agents.
+A small collection of [Claude Code](https://claude.com/claude-code) skills.
 
-1. **Surveys the project** — README/CLAUDE.md/AGENTS.md, manifest files, existing `.claude/agents`/`.claude/skills`, git history, and a `graphify-out/graph.json` if one exists.
-2. **Grills you for scope** wherever the survey leaves gaps — nothing here to build on, or what's here doesn't say what to build next.
-3. **Drafts a plan**: the settled scope broken into units, each with a recommended model (cheapest Claude tier that fits, or a local/other-provider model when there's a concrete reason to leave Claude) and any skills the unit should be pointed at.
-4. **Waits for your approval** on the plan — nothing gets spawned until you confirm.
-5. **Spawns** each approved unit — via the Agent tool for a Claude tier, or as a direct local/API call for a non-Claude model.
+| Skill | Use it to... |
+|---|---|
+| [`kickoff`](skills/kickoff) | Turn "start working on this" into a set of scoped, right-sized sub-agents — survey, grill for scope, plan, get approval, spawn. |
+| [`build-loop`](skills/build-loop) | Build a feature or fix a bug in small, independently-verified increments — plan → implement → test → fix, one step at a time, never batched. |
+| [`build-loop-ui`](skills/build-loop-ui) | `build-loop`'s discipline for web UI work — every increment is also verified live in a real browser, not just by automated tests. |
+| [`thorough-tests`](skills/thorough-tests) | Write or review tests that actually catch bugs — happy path, edge cases, invalid input, regressions, no tautological assertions. |
+| [`root-cause-fix`](skills/root-cause-fix) | Fix a red test/check/bug by root cause instead of guess-patching, with a hard stop before thrashing. |
+| [`ui-verify`](skills/ui-verify) | Verify a web UI actually works by driving it in a real browser — render, interaction result, console, network, viewport. |
+
+`build-loop`/`build-loop-ui` are thin orchestrators over the other three — each of `thorough-tests`, `root-cause-fix`, and `ui-verify` is scoped to do one thing and works fine invoked on its own, outside the loop.
+
+Each skill is self-contained in its own directory (`SKILL.md` plus, where present, `references/`) and can be installed independently.
 
 ## Install
 
-Clone straight into your skills directory so it's available in every project:
+Clone the repo once, then copy (or symlink) the skill(s) you want into your skills directory:
 
 ```sh
-git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git "$HOME/.claude/skills/kickoff"
+git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git
+
+# global — available in every project
+cp -r Skill-Pubes/skills/<skill-name> "$HOME/.claude/skills/<skill-name>"
+
+# project-scoped instead
+cp -r Skill-Pubes/skills/<skill-name> .claude/skills/<skill-name>
 ```
 
-(On Windows: `%USERPROFILE%\.claude\skills\kickoff`.)
+On Windows, `$HOME` is `%USERPROFILE%`. A symlink works the same as a copy and picks up updates on `git pull`:
 
-To scope it to one project instead, clone into `.claude/skills/kickoff` at the repo root.
+```sh
+ln -s "$(pwd)/Skill-Pubes/skills/<skill-name>" "$HOME/.claude/skills/<skill-name>"
+```
 
-## Use
-
-Type `/kickoff`, or just start describing work you want kicked off — the skill's description is written to trigger on its own for "start new/unclear work," "kick off/bootstrap a project," and "split this into parallel agents."
-
-## Requires
-
-- The `grilling` skill for Step 2's interview — ships in the [`mattpocock-skills`](https://github.com/mattpocock/skills) plugin.
-- Optionally, a `graphify` skill for Step 1, if the project already has a `graphify-out/` knowledge graph.
+See each skill's own `README.md` for what it needs beyond this (some depend on another skill being installed too).
 
 ## License
 
