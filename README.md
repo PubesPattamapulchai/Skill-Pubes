@@ -13,7 +13,7 @@ A [Claude Code](https://claude.com/claude-code) skill that turns "start working 
 Clone straight into your skills directory so it's available in every project:
 
 ```sh
-git clone https://github.com/PubesPattamapulchai/kickoff-skill.git "$HOME/.claude/skills/kickoff"
+git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git "$HOME/.claude/skills/kickoff"
 ```
 
 (On Windows: `%USERPROFILE%\.claude\skills\kickoff`.)
