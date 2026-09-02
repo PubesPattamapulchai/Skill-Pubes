@@ -1,5 +1,5 @@
 ---
-name: beat-baseline
+name: shiba-beat-baseline
 description: Analyze a fixed, non-extendable set of existing data (and everything already tried against it) to find ways to beat a known baseline on some metric -- generates candidate methods, scores each by expected uplift vs. time/effort and risk, ranks them worth-it vs. not-worth-it, and pilots the cheapest high-signal candidates on held-out data before committing to a full run. Fits DL/ML tasks racing a baseline (a competition, a benchmark, a prior model version) as well as non-technical optimization bounded by whatever data already exists. Use when the data/experiments already available are fixed and the job is to beat a known number with them.
 ---
 

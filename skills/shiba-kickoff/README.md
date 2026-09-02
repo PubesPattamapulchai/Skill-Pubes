@@ -1,4 +1,4 @@
-# kickoff
+# shiba-kickoff
 
 A [Claude Code](https://claude.com/claude-code) skill that turns "start working on this" into a set of scoped, right-sized sub-agents.
 
@@ -14,14 +14,14 @@ This skill lives in the [Skill-Pubes](../..) collection — see the [top-level R
 
 ```sh
 git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git
-cp -r Skill-Pubes/skills/kickoff "$HOME/.claude/skills/kickoff"
+cp -r Skill-Pubes/skills/shiba-kickoff "$HOME/.claude/skills/shiba-kickoff"
 ```
 
-(On Windows: `%USERPROFILE%\.claude\skills\kickoff`.) To scope it to one project instead, copy into `.claude/skills/kickoff` at that project's repo root.
+(On Windows: `%USERPROFILE%\.claude\skills\shiba-kickoff`.) To scope it to one project instead, copy into `.claude/skills/shiba-kickoff` at that project's repo root.
 
 ## Use
 
-Type `/kickoff`, or just start describing work you want kicked off — the skill's description is written to trigger on its own for "start new/unclear work," "kick off/bootstrap a project," and "split this into parallel agents."
+Type `/shiba-kickoff`, or just start describing work you want kicked off — the skill's description is written to trigger on its own for "start new/unclear work," "kick off/bootstrap a project," and "split this into parallel agents."
 
 ## Requires
 

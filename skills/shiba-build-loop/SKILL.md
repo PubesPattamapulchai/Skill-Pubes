@@ -1,5 +1,5 @@
 ---
-name: build-loop
+name: shiba-build-loop
 description: Plan a coding task as small, independently-verifiable increments, then implement -> test -> fix one increment at a time -- never starting the next increment while the current one is red or unverified. Use when building a feature, fixing a bug, or making a multi-step change that should be done carefully with thorough testing rather than all at once.
 ---
 
@@ -7,7 +7,7 @@ description: Plan a coding task as small, independently-verifiable increments, t
 
 The discipline this skill enforces: **one increment, fully verified, before the next one starts.** Writing a whole feature and then debugging it end-to-end is the failure mode this skill exists to prevent — by the time something breaks you can't tell which of five changes caused it. Small, verified steps trade a little more overhead per step for a lot less time spent untangling failures later.
 
-This skill owns the *loop* — scoping, decomposition, and increment sequencing. It delegates the two sub-disciplines that make each increment trustworthy to their own skills: writing tests that actually catch bugs (`thorough-tests`) and fixing a red result by root cause instead of guessing (`root-cause-fix`). Both are required — call the Skill tool with their name at the point below, don't inline a shortcut version of either.
+This skill owns the *loop* — scoping, decomposition, and increment sequencing. It delegates the two sub-disciplines that make each increment trustworthy to their own skills: writing tests that actually catch bugs (`shiba-thorough-tests`) and fixing a red result by root cause instead of guessing (`shiba-root-cause-fix`). Both are required — call the Skill tool with their name at the point below, don't inline a shortcut version of either.
 
 If `CONTEXT.md` exists, read it for domain vocabulary before naming anything. Check ADRs in the area you're touching.
 
@@ -41,9 +41,9 @@ Order by dependency; put the riskiest or most uncertain increment early — if a
 Repeat per increment, in order. **Do not start increment N+1 while increment N is red, partial, or unverified.**
 
 1. **Implement only this increment.** Notice something else worth fixing? Add a row to the plan instead of doing it inline — scope creep inside a "small step" is how steps stop being small.
-2. **Cover it with tests** — call the Skill tool with `thorough-tests` and apply its checklist to this increment's change.
+2. **Cover it with tests** — call the Skill tool with `shiba-thorough-tests` and apply its checklist to this increment's change.
 3. **Run it for real.** Tests, typecheck, lint, build — whatever the project has. Never report green without having executed something and read its output.
-4. **Red → fix** — call the Skill tool with `root-cause-fix`. Don't hand-roll a debug loop here; that skill's stop condition is what keeps this from turning into blind thrashing.
+4. **Red → fix** — call the Skill tool with `shiba-root-cause-fix`. Don't hand-roll a debug loop here; that skill's stop condition is what keeps this from turning into blind thrashing.
 5. **Regression check** — run the broader/full test suite, not just this increment's new tests, before marking it done.
 6. **Report and move on** — state the increment is done, with the command and result that prove it. Only then start the next one.
 
@@ -62,6 +62,6 @@ Repeat per increment, in order. **Do not start increment N+1 while increment N i
 
 - The plan from Step 1 turns out to be wrong mid-loop (an increment reveals the decomposition doesn't fit reality).
 - A result reveals the *spec itself* is ambiguous or contradictory, not just the code.
-- `root-cause-fix`'s stop condition triggers and sharpening the signal still doesn't produce a workable theory.
+- `shiba-root-cause-fix`'s stop condition triggers and sharpening the signal still doesn't produce a workable theory.
 
 Stopping to surface one of these costs a message. Silently pushing through it costs the rest of the loop's integrity.

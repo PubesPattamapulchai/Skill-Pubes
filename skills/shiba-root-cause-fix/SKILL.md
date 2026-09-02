@@ -1,5 +1,5 @@
 ---
-name: root-cause-fix
+name: shiba-root-cause-fix
 description: Diagnose and fix a failing test, check, or reported bug by finding the actual root cause instead of guess-patching -- with a hard stop before thrashing blindly. Use when a check goes red and needs fixing, when the user reports something broken, or after a fix attempt didn't actually work.
 ---
 

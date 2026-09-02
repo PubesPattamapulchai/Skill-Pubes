@@ -1,4 +1,4 @@
-# beat-baseline
+# shiba-beat-baseline
 
 A [Claude Code](https://claude.com/claude-code) skill for beating a known baseline using only data (and prior experiments) that are already on hand — no new data collection, no live A/B test. Fits DL/ML work racing a baseline (a competition, a benchmark, a prior model version) as well as non-technical optimization.
 
@@ -17,14 +17,14 @@ This skill lives in the [Skill-Pubes](../..) collection — see the [top-level R
 
 ```sh
 git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git
-cp -r Skill-Pubes/skills/beat-baseline "$HOME/.claude/skills/beat-baseline"
+cp -r Skill-Pubes/skills/shiba-beat-baseline "$HOME/.claude/skills/shiba-beat-baseline"
 ```
 
-(On Windows: `%USERPROFILE%\.claude\skills\beat-baseline`.) To scope it to one project instead, copy into `.claude/skills/beat-baseline` at that project's repo root.
+(On Windows: `%USERPROFILE%\.claude\skills\shiba-beat-baseline`.) To scope it to one project instead, copy into `.claude/skills/shiba-beat-baseline` at that project's repo root.
 
 ## Use
 
-Type `/beat-baseline`, or describe the task as "here's my baseline and my data, help me beat it" — the skill's description is written to trigger on that on its own.
+Type `/shiba-beat-baseline`, or describe the task as "here's my baseline and my data, help me beat it" — the skill's description is written to trigger on that on its own.
 
 ## License
 

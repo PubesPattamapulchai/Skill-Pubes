@@ -1,9 +1,9 @@
 ---
-name: kickoff
+name: shiba-kickoff
 description: Kick off work on a project by surveying it for existing context, grilling the user for scope when there's nothing to build on, then drafting a plan of scoped sub-agents (model + skills per scope) for approval before spawning. Use when starting new or unclear work in a project, when asked to "kick off"/"bootstrap" a project, or when asked to split a goal into parallel agents with appropriate models.
 ---
 
-# /kickoff
+# /shiba-kickoff
 
 Turn "start working on this" into a set of scoped, right-sized sub-agents: survey what already exists, fill the gaps by grilling the user, draft an agent plan (model + skills per scope), get it approved, then spawn.
 

@@ -1,5 +1,5 @@
 ---
-name: thorough-tests
+name: shiba-thorough-tests
 description: Write or review tests that actually catch bugs -- happy path, edge/boundary cases, invalid input, and regressions, with no tautological or implementation-coupled assertions. Use when writing tests for new code, when told tests aren't thorough enough, or when a step in a larger plan calls for verifying a change before moving on.
 ---
 

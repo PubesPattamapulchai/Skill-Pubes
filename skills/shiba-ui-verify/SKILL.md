@@ -1,5 +1,5 @@
 ---
-name: ui-verify
+name: shiba-ui-verify
 description: Verify a web UI actually works by driving it in a real browser -- correct render, correct interaction result, clean console, clean network, checked at more than one viewport -- instead of trusting that the code or a unit test is enough. Use after any UI change, or when asked to check/verify a page in the browser.
 ---
 
