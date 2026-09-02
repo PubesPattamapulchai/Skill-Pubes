@@ -18,7 +18,19 @@ Each skill is self-contained in its own directory (`SKILL.md` plus, where presen
 
 ## Install
 
-Clone the repo once, then copy (or symlink) the skill(s) you want into your skills directory:
+Clone the repo once, then run the install script to copy every skill into your global skills directory:
+
+```sh
+git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git
+cd Skill-Pubes
+./install.sh              # global, all skills — macOS/Linux/Git Bash
+# or on Windows PowerShell:
+.\install.ps1
+```
+
+Flags: `--project`/`-Project` installs into `.claude/skills` (this project only) instead of global; `--link`/`-Link` symlinks instead of copying, so `git pull` updates apply without reinstalling; `--dest DIR`/`-Dest DIR` installs somewhere else. Re-run anytime to sync after pulling changes.
+
+To install only specific skills instead, copy (or symlink) them individually:
 
 ```sh
 git clone https://github.com/PubesPattamapulchai/Skill-Pubes.git
