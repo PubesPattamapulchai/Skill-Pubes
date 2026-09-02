@@ -10,6 +10,7 @@ A small collection of [Claude Code](https://claude.com/claude-code) skills.
 | [`thorough-tests`](skills/thorough-tests) | Write or review tests that actually catch bugs — happy path, edge cases, invalid input, regressions, no tautological assertions. |
 | [`root-cause-fix`](skills/root-cause-fix) | Fix a red test/check/bug by root cause instead of guess-patching, with a hard stop before thrashing. |
 | [`ui-verify`](skills/ui-verify) | Verify a web UI actually works by driving it in a real browser — render, interaction result, console, network, viewport. |
+| [`beat-baseline`](skills/beat-baseline) | Beat a known baseline (DL/ML or not) using only fixed, on-hand data — read what's already been tried, score candidate methods by expected uplift vs. effort/risk, rank worth-it vs. not, pilot the best before a full rollout. |
 
 `build-loop`/`build-loop-ui` are thin orchestrators over the other three — each of `thorough-tests`, `root-cause-fix`, and `ui-verify` is scoped to do one thing and works fine invoked on its own, outside the loop.
 
