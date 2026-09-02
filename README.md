@@ -10,6 +10,7 @@ A small collection of [Claude Code](https://claude.com/claude-code) skills.
 | [`shiba-thorough-tests`](skills/shiba-thorough-tests) | Write or review tests that actually catch bugs — happy path, edge cases, invalid input, regressions, no tautological assertions. |
 | [`shiba-root-cause-fix`](skills/shiba-root-cause-fix) | Fix a red test/check/bug by root cause instead of guess-patching, with a hard stop before thrashing. |
 | [`shiba-ui-verify`](skills/shiba-ui-verify) | Verify a web UI actually works by driving it in a real browser — render, interaction result, console, network, viewport. |
+| [`shiba-ui-theme`](skills/shiba-ui-theme) | Design or restyle a UI so its look comes from what the project is actually about — vivid and expressive for an anime project, pitch-toned and kinetic for a football one — instead of defaulting to generic style. |
 | [`shiba-beat-baseline`](skills/shiba-beat-baseline) | Beat a known baseline (DL/ML or not) using only fixed, on-hand data — read what's already been tried, score candidate methods by expected uplift vs. effort/risk, rank worth-it vs. not, pilot the best before a full rollout. |
 
 `shiba-build-loop`/`shiba-build-loop-ui` are thin orchestrators over the other three — each of `shiba-thorough-tests`, `shiba-root-cause-fix`, and `shiba-ui-verify` is scoped to do one thing and works fine invoked on its own, outside the loop.
