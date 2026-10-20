@@ -5,7 +5,7 @@ description: Kick off work on a project by surveying it for existing context, gr
 
 # /shiba-kickoff
 
-Turn "start working on this" into finished, reviewed work: survey what already exists, fill the gaps by grilling the user, draft an agent plan (model + skills per scope), then build it, test it, and code-review it without stopping to ask again. The `superpowers:*` skills drive Steps 5-8; if the superpowers plugin isn't installed, fall back to `shiba-build-loop` (or `shiba-build-loop-ui` for web UI work) for Steps 5-6 and the `code-review` skill for Step 7.
+Turn "start working on this" into finished, reviewed work: survey what already exists, fill the gaps by grilling the user, draft an agent plan (model + skills per scope), get it approved, then build it, test it, and code-review it without stopping again. The `superpowers:*` skills drive Steps 5-8; if the superpowers plugin isn't installed, fall back to `shiba-build-loop` (or `shiba-build-loop-ui` for web UI work) for Steps 5-6 and the `code-review` skill for Step 7.
 
 ## What You Must Do When Invoked
 
@@ -45,12 +45,11 @@ Present the plan as a table: Scope | Goal | Model | Agent type | Skills. Note an
 
 **Completion criterion:** every settled decision from Step 2 maps to exactly one unit in the table; nothing settled is left unassigned.
 
-### Step 4 — Confirm, or go
+### Step 4 — Get approval
 
-- **Step 2 ran a grilling session:** the user already settled scope. Show the table, then continue to Step 5 without waiting.
-- **Step 2 was skipped** (the survey alone gave the task): show the table and wait for the user to confirm, drop, merge, or override units. **Do not build before they confirm** — hard stop.
+Show the table. Ask the user to confirm, drop units, merge units, or override a model/skill choice. **Do not write a plan file, create a worktree, or spawn anything before they confirm** — hard stop, whether or not Step 2 ran a grilling session, and even when the plan looks obviously right. A silent or ambiguous reply is not a confirmation: ask again.
 
-Either way, stop and ask if the plan needs something the settled scope didn't cover.
+Once they confirm, Steps 5-8 run without further stops, except when the plan needs something the confirmed scope didn't cover.
 
 ### Step 5 — Build
 
