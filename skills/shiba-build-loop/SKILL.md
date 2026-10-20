@@ -41,9 +41,9 @@ Order by dependency; put the riskiest or most uncertain increment early — if a
 Repeat per increment, in order. **Do not start increment N+1 while increment N is red, partial, or unverified.**
 
 1. **Implement only this increment.** Notice something else worth fixing? Add a row to the plan instead of doing it inline — scope creep inside a "small step" is how steps stop being small.
-2. **Cover it with tests** — call the Skill tool with `shiba-thorough-tests` and apply its checklist to this increment's change.
+2. **Cover it with tests** — call the Skill tool with `shiba-thorough-tests` and apply its checklist to this increment's change. If `superpowers:test-driven-development` is installed, follow it too: write the failing test first, watch it fail, then implement.
 3. **Run it for real.** Tests, typecheck, lint, build — whatever the project has. Never report green without having executed something and read its output.
-4. **Red → fix** — call the Skill tool with `shiba-root-cause-fix`. Don't hand-roll a debug loop here; that skill's stop condition is what keeps this from turning into blind thrashing.
+4. **Red → fix** — call the Skill tool with `shiba-root-cause-fix`. Don't hand-roll a debug loop here; that skill's stop condition is what keeps this from turning into blind thrashing. Non-routine failure (flaky, no clear repro): `superpowers:systematic-debugging`.
 5. **Regression check** — run the broader/full test suite, not just this increment's new tests, before marking it done.
 6. **Report and move on** — state the increment is done, with the command and result that prove it. Only then start the next one.
 
@@ -54,7 +54,8 @@ Repeat per increment, in order. **Do not start increment N+1 while increment N i
 1. Run the full test suite and build once more from a clean state.
 2. Read the complete diff: remove debug prints, temporary TODOs, dead code from abandoned approaches.
 3. Re-check Step 0's done-criteria against what actually shipped — confirm nothing was quietly dropped.
-4. If the `code-review` skill is installed, run a pass with it — this skill is about correctness-by-construction as you go; a second pass catches what building it didn't reveal.
+4. Call `superpowers:verification-before-completion` before claiming done: quote the command and output behind every claim.
+5. Call `superpowers:requesting-code-review` (and the `code-review` skill, if installed) over the full diff, and handle findings with `superpowers:receiving-code-review` — this skill is about correctness-by-construction as you go; a second pass catches what building it didn't reveal.
 
 **Completion criterion:** full suite green, done-criteria checklist fully checked, diff clean of scaffolding.
 

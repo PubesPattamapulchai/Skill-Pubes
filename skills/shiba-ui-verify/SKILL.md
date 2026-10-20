@@ -31,6 +31,8 @@ For the view/interaction under test:
 
 Never trigger a native `alert`/`confirm`/`prompt` while doing this — it blocks the automation. If a flow requires one, warn before clicking into it, per the `claude-in-chrome` skill's guidance.
 
+If `superpowers:verification-before-completion` is installed, call it before reporting this check as passed — the screenshot/GIF and console read are the evidence it asks for.
+
 ## Scope
 
 This checks one view/interaction at a time. To confirm a whole multi-step flow still works end-to-end after several such changes, repeat the check across the full flow in one continuous session rather than only at each individual change's boundary — combined regressions (a modal that opens but doesn't close, a form that validates fields but not the whole submission) only show up that way.

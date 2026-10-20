@@ -5,8 +5,9 @@ A [Claude Code](https://claude.com/claude-code) skill that turns "start working 
 1. **Surveys the project** — README/CLAUDE.md/AGENTS.md, manifest files, existing `.claude/agents`/`.claude/skills`, git history, and a `graphify-out/graph.json` if one exists.
 2. **Grills you for scope** wherever the survey leaves gaps — nothing here to build on, or what's here doesn't say what to build next.
 3. **Drafts a plan**: the settled scope broken into units, each with a recommended model (cheapest Claude tier that fits, or a local/other-provider model when there's a concrete reason to leave Claude) and any skills the unit should be pointed at.
-4. **Waits for your approval** on the plan — nothing gets spawned until you confirm.
-5. **Spawns** each approved unit — via the Agent tool for a Claude tier, or as a direct local/API call for a non-Claude model.
+4. **Waits for your approval** of the plan — nothing is built or spawned until you confirm. Then builds it, using `superpowers` `writing-plans` → `subagent-driven-development` with test-first implementers.
+5. **Tests it** — full suite and build via `verification-before-completion`, plus a live browser pass for web UIs.
+6. **Code-reviews it** — `requesting-code-review` / `receiving-code-review`, up to 2 rounds, then hands the branch to `finishing-a-development-branch` so you pick merge/PR.
 
 ## Install
 
@@ -26,6 +27,7 @@ Type `/shiba-kickoff`, or just start describing work you want kicked off — the
 ## Requires
 
 - The `grilling` skill for Step 2's interview — ships in the [`mattpocock-skills`](https://github.com/mattpocock/skills) plugin.
+- The [`superpowers`](https://github.com/obra/superpowers) plugin for Steps 5-8 (falls back to `shiba-build-loop` and `code-review` without it).
 - Optionally, a `graphify` skill for Step 1, if the project already has a `graphify-out/` knowledge graph.
 
 ## License

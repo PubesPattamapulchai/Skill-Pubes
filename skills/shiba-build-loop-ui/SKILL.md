@@ -21,4 +21,6 @@ Between `shiba-build-loop`'s "run it for real" and "regression check" steps, cal
 
 Before `shiba-build-loop`'s final full-suite run, do one more `shiba-ui-verify` pass across the *entire* affected flow end-to-end, not just the last increment in isolation. Increments that each verified individually can still combine into a broken flow — a modal that opens correctly but doesn't close, a form that validates each field but not the whole submission. This pass is what catches that.
 
+Then follow `shiba-build-loop`'s Step 3 superpowers gates (`verification-before-completion`, `requesting-code-review`), and include the browser pass's evidence in the claim.
+
 **Completion criterion:** the full flow works end-to-end in one continuous browser session with a clean console throughout, on top of `shiba-build-loop`'s own completion criterion.

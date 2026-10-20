@@ -1,11 +1,11 @@
 ---
 name: shiba-kickoff
-description: Kick off work on a project by surveying it for existing context, grilling the user for scope when there's nothing to build on, then drafting a plan of scoped sub-agents (model + skills per scope) for approval before spawning. Use when starting new or unclear work in a project, when asked to "kick off"/"bootstrap" a project, or when asked to split a goal into parallel agents with appropriate models.
+description: Kick off work on a project by surveying it for existing context, grilling the user for scope when there's nothing to build on, then drafting a plan of scoped sub-agents (model + skills per scope) and carrying it through build, test, and code review with the superpowers skills. Use when starting new or unclear work in a project, when asked to "kick off"/"bootstrap" a project, or when asked to split a goal into parallel agents with appropriate models.
 ---
 
 # /shiba-kickoff
 
-Turn "start working on this" into a set of scoped, right-sized sub-agents: survey what already exists, fill the gaps by grilling the user, draft an agent plan (model + skills per scope), get it approved, then spawn.
+Turn "start working on this" into finished, reviewed work: survey what already exists, fill the gaps by grilling the user, draft an agent plan (model + skills per scope), get it approved, then build it, test it, and code-review it without stopping again. The `superpowers:*` skills drive Steps 5-8; if the superpowers plugin isn't installed, fall back to `shiba-build-loop` (or `shiba-build-loop-ui` for web UI work) for Steps 5-6 and the `code-review` skill for Step 7.
 
 ## What You Must Do When Invoked
 
@@ -47,10 +47,37 @@ Present the plan as a table: Scope | Goal | Model | Agent type | Skills. Note an
 
 ### Step 4 — Get approval
 
-Show the table. Ask the user to confirm, drop units, merge units, or override a model/skill choice. **Do not spawn anything before they confirm** — this is a hard stop, not a default you can skip when the plan looks obviously right.
+Show the table. Ask the user to confirm, drop units, merge units, or override a model/skill choice. **Do not write a plan file, create a worktree, or spawn anything before they confirm** — hard stop, whether or not Step 2 ran a grilling session, and even when the plan looks obviously right. A silent or ambiguous reply is not a confirmation: ask again.
 
-### Step 5 — Spawn
+Once they confirm, Steps 5-8 run without further stops, except when the plan needs something the confirmed scope didn't cover.
 
-For each approved unit: if it's on a Claude tier, call the Agent tool (model + subagent_type + isolation as decided, description, and a prompt that states the scope boundary and names the pointed-to skills). If it's routed to a local/other-provider model, run it as the direct Bash/PowerShell/WebFetch call decided in Step 3 instead, and fold its output back into the plan the same way a sub-agent's result would be used. Units with no dependency between them go in one batch, per the standing guidance on independent tool calls. Units that depend on another's output wait for it.
+### Step 5 — Build
 
-**Completion criterion:** every approved unit has been spawned, or the user said to stop.
+1. If on `main`/`master`, call the Skill tool with `superpowers:using-git-worktrees` first.
+2. Call the Skill tool with `superpowers:writing-plans` to turn the Step 3 table into an implementation plan.
+3. Execute it with `superpowers:subagent-driven-development`. Each Step 3 unit is a task, spawned with the model, agent type, and isolation decided there. A unit routed to a local/other-provider model runs as the direct Bash/PowerShell/WebFetch call instead and its output is folded back like a sub-agent's result. Units with no dependency between them go in one batch; dependent units wait.
+4. Tell every implementer to follow `superpowers:test-driven-development`, plus `shiba-build-loop-ui` when the unit touches a web UI.
+
+**Completion criterion:** every unit implemented and committed on the working branch, each with its own tests.
+
+### Step 6 — Test
+
+Call the Skill tool with `superpowers:verification-before-completion`. Run the full test suite, typecheck, lint, and build from a clean state. For a web UI, also run `shiba-ui-verify` over the whole affected flow.
+
+Red → call `superpowers:systematic-debugging` (routine failure: `shiba-root-cause-fix`), fix, rerun everything. Never report green without quoting the command and its output.
+
+**Completion criterion:** full suite and build green, output read.
+
+### Step 7 — Code review
+
+1. Call the Skill tool with `superpowers:requesting-code-review` over the whole branch diff against the settled scope. If the `code-review` skill is installed, run it too.
+2. Handle findings with `superpowers:receiving-code-review`: verify each, fix the real ones, push back on the wrong ones.
+3. After any fix, redo Step 6, then re-review.
+
+Max 2 review rounds. Still open findings after that: stop and show them to the user.
+
+**Completion criterion:** a review pass with no unresolved real findings, and Step 6 green after the last change.
+
+### Step 8 — Finish
+
+Call the Skill tool with `superpowers:finishing-a-development-branch`. Merge, PR, or discard is the user's call — don't pick for them.
