@@ -30,4 +30,8 @@ Don't skip verification — build the tightest feedback loop available instead: 
 
 ## Running them
 
-Never report a test (or a checklist item above) as satisfied without having actually executed something and read its output. Quote the command and the result.
+Never report a test (or a checklist item above) as satisfied without having actually executed something and read its output. Quote the command and the result. If `superpowers:verification-before-completion` is installed, call it before the claim.
+
+## Writing them first
+
+When building new behavior, `superpowers:test-driven-development` (if installed) gives the order: failing test, watch it fail, then implement. This skill's checklist decides what the tests must cover.

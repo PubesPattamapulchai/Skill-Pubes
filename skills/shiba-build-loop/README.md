@@ -32,6 +32,7 @@ For work with a web UI, use [`shiba-build-loop-ui`](../shiba-build-loop-ui) inst
 - [`shiba-thorough-tests`](../shiba-thorough-tests) — for Step 2's test-coverage gate.
 - [`shiba-root-cause-fix`](../shiba-root-cause-fix) — for Step 2's fix-on-red gate.
 - Optionally, `grilling` for Step 0 if the goal is ambiguous, and `code-review` for an extra pass in Step 3.
+- Optionally, the [`superpowers`](https://github.com/obra/superpowers) plugin: `test-driven-development` and `systematic-debugging` in Step 2, `verification-before-completion`, `requesting-code-review`, and `receiving-code-review` in Step 3.
 
 ## License
 

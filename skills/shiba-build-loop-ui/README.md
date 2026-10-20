@@ -30,6 +30,7 @@ Type `/shiba-build-loop-ui`, or ask for a web page/app feature or fix — the sk
 - [`shiba-ui-verify`](../shiba-ui-verify) — the live browser-check gate.
 - The `claude-in-chrome` skill (or equivalent browser-automation tools), which `shiba-ui-verify` drives.
 - Optionally, the `run` skill to launch the app.
+- Optionally, the [`superpowers`](https://github.com/obra/superpowers) plugin, via `shiba-build-loop`.
 
 ## License
 

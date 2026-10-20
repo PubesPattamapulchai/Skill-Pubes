@@ -4,7 +4,7 @@ A small collection of [Claude Code](https://claude.com/claude-code) skills.
 
 | Skill | Use it to... |
 |---|---|
-| [`shiba-kickoff`](skills/shiba-kickoff) | Turn "start working on this" into a set of scoped, right-sized sub-agents — survey, grill for scope, plan, get approval, spawn. |
+| [`shiba-kickoff`](skills/shiba-kickoff) | Turn "start working on this" into a set of scoped, right-sized sub-agents — survey, grill for scope, plan, then build, test, and code-review it with superpowers. |
 | [`shiba-build-loop`](skills/shiba-build-loop) | Build a feature or fix a bug in small, independently-verified increments — plan → implement → test → fix, one step at a time, never batched. |
 | [`shiba-build-loop-ui`](skills/shiba-build-loop-ui) | `shiba-build-loop`'s discipline for web UI work — every increment is also verified live in a real browser, not just by automated tests. |
 | [`shiba-thorough-tests`](skills/shiba-thorough-tests) | Write or review tests that actually catch bugs — happy path, edge cases, invalid input, regressions, no tautological assertions. |
@@ -12,6 +12,8 @@ A small collection of [Claude Code](https://claude.com/claude-code) skills.
 | [`shiba-ui-verify`](skills/shiba-ui-verify) | Verify a web UI actually works by driving it in a real browser — render, interaction result, console, network, viewport. |
 | [`shiba-ui-theme`](skills/shiba-ui-theme) | Design or restyle a UI so its look comes from what the project is actually about — vivid and expressive for an anime project, pitch-toned and kinetic for a football one — instead of defaulting to generic style. |
 | [`shiba-beat-baseline`](skills/shiba-beat-baseline) | Beat a known baseline (DL/ML or not) using only fixed, on-hand data — read what's already been tried, score candidate methods by expected uplift vs. effort/risk, rank worth-it vs. not, pilot the best before a full rollout. |
+| [`shiba-supply-chain`](skills/shiba-supply-chain) | Read a supply-chain dataset (SAP-style or plain columns): what each column likely means, what one row is, and whether it's usable for planning, inventory, or procurement decisions. |
+| [`shiba-supply-chain-stats`](skills/shiba-supply-chain-stats) | Descriptive stats (mean, SD, CV, outliers, skew) of LT, demand, etc., overall and by month/quarter/year/weekday/matgrp/plant, with a business reading. |
 
 `shiba-build-loop`/`shiba-build-loop-ui` are thin orchestrators over the other three — each of `shiba-thorough-tests`, `shiba-root-cause-fix`, and `shiba-ui-verify` is scoped to do one thing and works fine invoked on its own, outside the loop.
 

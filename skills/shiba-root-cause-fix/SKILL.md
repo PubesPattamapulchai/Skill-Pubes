@@ -24,4 +24,4 @@ After roughly **3 focused attempts** still red: stop. Do not attempt a 4th blind
 
 ## Scope
 
-This is the lightweight version for routine red-to-green fixing inside a build or review loop — a failing test, a broken check, a reported one-off bug with an obvious reproduction. For a genuinely hard bug (non-deterministic, no clear repro, a performance regression with no baseline), a fuller diagnosis discipline is warranted; use the `diagnosing-bugs` skill if it's installed instead of pushing this one past its scope.
+This is the lightweight version for routine red-to-green fixing inside a build or review loop — a failing test, a broken check, a reported one-off bug with an obvious reproduction. For a genuinely hard bug (non-deterministic, no clear repro, a performance regression with no baseline), a fuller diagnosis discipline is warranted; use `superpowers:systematic-debugging` or `diagnosing-bugs`, whichever is installed, instead of pushing this one past its scope.
